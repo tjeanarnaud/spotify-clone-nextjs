@@ -1,14 +1,25 @@
 import Head from 'next/head'
+import Sidebar from '../components/sidebar'
+
+import Style from '../styles/home.module.css'
 
 export default function Home() {
 	return (
-		<div className='min-h-screen'>
+		<>
 			<Head>
 				<title>Spotify 2.0</title>
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<h1>This is a DOPE Spotify 2.0 build</h1>
-		</div>
+			<div className={Style.wrapper}>
+				<div className={Style.container}>
+					{/* Sidebar */}
+					<Sidebar />
+					{/* main */}
+					<div className={Style.main}></div>
+				</div>
+			</div>
+
+			<div className='player'>{/* Player */}</div>
+		</>
 	)
 }
