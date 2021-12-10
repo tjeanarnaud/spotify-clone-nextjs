@@ -1,0 +1,9 @@
+.wrapper {
+	@apply bg-black h-screen overflow-hidden;
+}
+
+.container {
+}
+
+.main {
+}

@@ -1,0 +1,7 @@
+.container {
+	@apply text-gray-500 p-5 font-raleway text-sm border-r border-gray-900;
+}
+
+.menu {
+	@apply space-y-4;
+}

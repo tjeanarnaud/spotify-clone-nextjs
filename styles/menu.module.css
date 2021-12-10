@@ -1,0 +1,11 @@
+.item {
+	@apply flex items-center space-x-2 hover:text-white transition duration-300 ease-out;
+}
+
+.playlist_item {
+	@apply cursor-pointer hover:text-white transition duration-300 ease-out;
+}
+
+.icon {
+	@apply w-5 h-5 fill-current;
+}
