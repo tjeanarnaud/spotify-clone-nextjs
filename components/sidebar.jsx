@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { signOut, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useRecoilState } from 'recoil'
 
 import { playlistIdState } from '../atoms/playlistAtoms'
@@ -33,10 +33,6 @@ const Sidebar = () => {
 	return (
 		<div className={Aside.container}>
 			<div className={Aside.menu}>
-				<button className={Menu.item} onClick={() => signOut()}>
-					<LogoutIcon className={Menu.icon} />
-					<p>Logout</p>
-				</button>
 				<button className={Menu.item}>
 					<HomeIcon className={Menu.icon} />
 					<p>Home</p>

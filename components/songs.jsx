@@ -1,9 +1,16 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { playlistState } from '../atoms/playlistAtoms'
+import Song from './song'
 
 const Songs = () => {
+	const playlist = useRecoilValue(playlistState)
+
 	return (
-		<div>
-			<p>song</p>
+		<div className='text-white px-8 pb-28 space-y-1'>
+			{playlist?.tracks.items.map((track, i) => (
+				<Song key={track.track.id} track={track} order={i} />
+			))}
 		</div>
 	)
 }
