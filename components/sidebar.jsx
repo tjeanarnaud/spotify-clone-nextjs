@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
+import { useRecoilState } from 'recoil'
+
+import { playlistIdState } from '../atoms/playlistAtoms'
+import useSpotify from '../hooks/useSpotify'
 
 import HomeIcon from '../assets/icons/home-outline-icon.svg'
 import SearchIcon from '../assets/icons/search-outline-icon.svg'
@@ -11,12 +15,12 @@ import LogoutIcon from '../assets/icons/logout-outline-icon.svg'
 
 import Aside from '../styles/sidebar.module.css'
 import Menu from '../styles/menu.module.css'
-import useSpotify from '../hooks/useSpotify'
 
 const Sidebar = () => {
 	const spotifyApi = useSpotify()
 	const { data: session, status } = useSession()
 	const [playlists, setPlaylists] = useState([])
+	const [playlistId, setPlaylistId] = useRecoilState(playlistIdState)
 
 	useEffect(() => {
 		if (spotifyApi.getAccessToken()) {
@@ -65,7 +69,11 @@ const Sidebar = () => {
 
 				{/* Playlist... */}
 				{playlists.map((playlist) => (
-					<p key={playlist.id} className={Menu.playlist_item}>
+					<p
+						key={playlist.id}
+						onClick={() => setPlaylistId(playlist.id)}
+						className={Menu.playlist_item}
+					>
 						{playlist.name}
 					</p>
 				))}
