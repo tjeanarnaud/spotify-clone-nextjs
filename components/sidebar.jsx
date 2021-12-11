@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 
 import HomeIcon from '../assets/icons/home-outline-icon.svg'
@@ -10,10 +11,20 @@ import LogoutIcon from '../assets/icons/logout-outline-icon.svg'
 
 import Aside from '../styles/sidebar.module.css'
 import Menu from '../styles/menu.module.css'
+import useSpotify from '../hooks/useSpotify'
 
 const Sidebar = () => {
+	const spotifyApi = useSpotify()
 	const { data: session, status } = useSession()
-	console.log(session)
+	const [playlists, setPlaylists] = useState([])
+
+	useEffect(() => {
+		if (spotifyApi.getAccessToken()) {
+			spotifyApi.getUserPlaylists().then((data) => {
+				setPlaylists(data.body.items)
+			})
+		}
+	}, [session, spotifyApi])
 
 	return (
 		<div className={Aside.container}>
@@ -53,26 +64,11 @@ const Sidebar = () => {
 				<hr className='border-t-[0.1px] border-gray-900' />
 
 				{/* Playlist... */}
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
-				<p className={Menu.playlist_item}>Playlist name...</p>
+				{playlists.map((playlist) => (
+					<p key={playlist.id} className={Menu.playlist_item}>
+						{playlist.name}
+					</p>
+				))}
 			</div>
 		</div>
 	)

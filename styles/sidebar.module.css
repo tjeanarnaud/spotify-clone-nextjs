@@ -1,5 +1,5 @@
 .container {
-	@apply text-gray-500 p-5 font-raleway text-sm border-r border-gray-900;
+	@apply text-gray-500 p-5 font-raleway text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen;
 }
 
 .menu {
