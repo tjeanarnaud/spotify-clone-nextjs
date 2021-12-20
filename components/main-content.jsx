@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/outline'
 import { shuffle } from 'lodash'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { playlistIdState, playlistState } from '../atoms/playlistAtoms'
+import { playlistIdState, playlistState } from '../atoms/playlistAtom'
 import useSpotify from '../hooks/useSpotify'
 import Songs from './songs'
 
@@ -37,8 +37,6 @@ const MainContent = () => {
 			})
 			.catch((error) => console.log('Something went wrong!!!', error))
 	}, [spotifyApi, playlistId])
-
-	console.log(playlist)
 
 	return (
 		<div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>

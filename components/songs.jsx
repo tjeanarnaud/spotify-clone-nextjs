@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { playlistState } from '../atoms/playlistAtoms'
+
+import { playlistState } from '../atoms/playlistAtom'
 import Song from './song'
 
 const Songs = () => {

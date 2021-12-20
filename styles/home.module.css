@@ -6,5 +6,6 @@
 	@apply flex;
 }
 
-.main {
+.player {
+	@apply sticky bottom-0;
 }

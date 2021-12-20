@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRecoilState } from 'recoil'
 
-import { playlistIdState } from '../atoms/playlistAtoms'
+import { playlistIdState } from '../atoms/playlistAtom'
 import useSpotify from '../hooks/useSpotify'
 
 import HomeIcon from '../assets/icons/home-outline-icon.svg'
@@ -11,7 +11,7 @@ import LibraryIcon from '../assets/icons/library-outline-icon.svg'
 import AddPlusOutlineIcon from '../assets/icons/add-plus-outline-icon.svg'
 import HeartIcon from '../assets/icons/heart-outline-icon.svg'
 import RssIcon from '../assets/icons/rss-outline-icon.svg'
-import LogoutIcon from '../assets/icons/logout-outline-icon.svg'
+// import LogoutIcon from '../assets/icons/logout-outline-icon.svg'
 
 import Aside from '../styles/sidebar.module.css'
 import Menu from '../styles/menu.module.css'
